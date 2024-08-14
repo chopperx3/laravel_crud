@@ -7,7 +7,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f4;
+            background-color: #494949;
         }
         .container {
             max-width: 800px;
@@ -54,9 +54,6 @@
         button:hover {
             opacity: 0.8;
         }
-        .back-button {
-            background-color: #6c757d;
-        }
     </style>
 </head>
 <body>
@@ -66,23 +63,23 @@
         <form action="{{ route('posts.update', $post->id) }}" method="POST">
             @csrf
             @method('PUT')
-            
+
             <label for="title">Título:</label>
             <input type="text" id="title" name="title" value="{{ old('title', $post->title) }}">
             @error('title')
                 <p style="color: red;">{{ $message }}</p>
             @enderror
-            
+
             <label for="body">Cuerpo:</label>
             <textarea id="body" name="body">{{ old('body', $post->body) }}</textarea>
             @error('body')
                 <p style="color: red;">{{ $message }}</p>
             @enderror
-            
+
             <button type="submit">Actualizar</button>
         </form>
-        
-        <a href="{{ route('posts.index') }}" class="button back-button">Volver a la lista de Posts</a>
+
+        <a href="{{ route('posts.index') }}" class="button">Volver a la lista de Posts</a>
     </div>
 </body>
 </html>

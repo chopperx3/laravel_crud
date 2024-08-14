@@ -7,12 +7,12 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f4;
+            background-color: #494949; /* Color de fondo de la página */
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background: #fff;
+            background: #fff; /* Fondo del contenedor */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -54,8 +54,10 @@
         button:hover {
             opacity: 0.8;
         }
-        .back-button {
-            background-color: #6c757d;
+        .error-message {
+            color: rgb(104, 9, 9);
+            font-size: 14px;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -65,23 +67,23 @@
 
         <form action="{{ route('posts.store') }}" method="POST">
             @csrf
-            
+
             <label for="title">Título:</label>
             <input type="text" id="title" name="title" value="{{ old('title') }}">
             @error('title')
-                <p style="color: red;">{{ $message }}</p>
+                <p class="error-message">{{ $message }}</p>
             @enderror
-            
+
             <label for="body">Cuerpo:</label>
             <textarea id="body" name="body">{{ old('body') }}</textarea>
             @error('body')
-                <p style="color: red;">{{ $message }}</p>
+                <p class="error-message">{{ $message }}</p>
             @enderror
-            
+
             <button type="submit">Crear</button>
         </form>
-        
-        <a href="{{ route('posts.index') }}" class="button back-button">Volver a la lista de Posts</a>
+
+        <a href="{{ route('posts.index') }}" class="button">Volver a la lista de Posts</a>
     </div>
 </body>
 </html>
